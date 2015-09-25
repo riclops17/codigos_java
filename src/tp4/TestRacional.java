@@ -14,8 +14,7 @@ import utiles.TecladoIn;
 public class TestRacional {
     public static void menu(){
         System.out.println("");
-        System.out.println("1:cargar un numero racional  ");
-        System.out.println("");
+        System.out.println("1:cargar un numero racional  ");  
         System.out.println("2:mostrar el numero racional ");
         System.out.println("3: ingresar otro numero racional y sumarlo");
         System.out.println("4: ingresar otro numero racional y restarlo");
@@ -50,7 +49,8 @@ public class TestRacional {
                     int nu1 = TecladoIn.readLineInt();
                     r2.setDenominador(de1);
                     r2.setNumerador(nu1);
-                    r1.suma(r2);
+                    r1 = r1.suma(r2);
+                    System.out.println("resultado:"+r1.aMostrar());
                     break;
                 case 4:System.out.println("ingrese el denominador del nuevo numero");
                     int de2 = TecladoIn.readLineInt();
@@ -58,7 +58,8 @@ public class TestRacional {
                     int nu2 = TecladoIn.readLineInt();
                     r2.setDenominador(de2);
                     r2.setNumerador(nu2);
-                    r1.resta(r2);
+                    r1 =r1.resta(r2);
+                    System.out.println("resultado :"+r1.aMostrar());
                     break;
                 case 5 : System.out.println("ingrese el denominador del nuevo numero");
                     int de4 = TecladoIn.readLineInt();
@@ -66,7 +67,8 @@ public class TestRacional {
                     int nu4 = TecladoIn.readLineInt();
                     r2.setDenominador(de4);
                     r2.setNumerador(nu4);
-                    r1.multiplicar(r2);
+                    r1 =r1.multiplicar(r2);
+                    System.out.println("resultado :"+r1.aMostrar());
                     break;
                 case 6 : System.out.println("ingrese el denominador del nuevo numero");
                     int de5 = TecladoIn.readLineInt();
@@ -74,7 +76,8 @@ public class TestRacional {
                     int nu5 = TecladoIn.readLineInt();
                     r2.setDenominador(de5);
                     r2.setNumerador(nu5);
-                    r1.dividir(r2);
+                    r1 = r1.dividir(r2);
+                    System.out.println("resultado =" +r1.aMostrar());
                     break;
                 case 7 : r1.simplificar(); break;
                     
