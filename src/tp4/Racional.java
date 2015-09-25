@@ -17,7 +17,7 @@ public class Racional {
     // cree el constructor vacio para que me ayude en las propias de tipo
     public Racional (){
         this.numerador=0;
-        this.numerador=0;
+        this.denominador=0;
     }
     public Racional ( int n, int d){
         numerador = n;
