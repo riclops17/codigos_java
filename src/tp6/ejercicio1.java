@@ -10,7 +10,7 @@ package tp6;
  * @author riclops
  */
 public class ejercicio1 {
-    public static int [] burbuja(int []a) {
+    public static  void burbuja(int []a) {
     //
     int i, j, x;
 
@@ -23,27 +23,28 @@ public class ejercicio1 {
             }
         }
     }
-    return a;
+    
     }
     public static boolean verificaOrd(int []b){
     //
      boolean res = true;
-     int i = 0;
+     int i=1;
+     int x;
+     x= b[0];
+     while ((i<b.length)&&(res)){
      
-     int c []= burbuja(b);
-     while (((i<b.length)&& res)){
-         if (b[i] == c[i]){
-            res = true; 
-         }else
-         {
-             res = false;
-            
-                     }
+     if(x<= b[i]){
          i++;
-         
+     }
+     else{
+         res=false;
+     }
+     
+     
+     }    
          
              
-     }
+     
      return res;
      
      
@@ -52,7 +53,7 @@ public class ejercicio1 {
     }
     public static void main(String[] args) {
        //
-        int a[]={1,2,3,4};
+        int a[]={2,1,3,4};
         if (verificaOrd(a)){
             System.out.println("estan en ordenados");
         }else{
