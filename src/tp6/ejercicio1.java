@@ -34,12 +34,14 @@ public class ejercicio1 {
      while ((i<b.length)&&(res)){
      
      if(x<= b[i]){
-         i++;
+        
+         x= b[i];
+          i++;
      }
      else{
          res=false;
      }
-     
+    
      
      }    
          
@@ -53,7 +55,7 @@ public class ejercicio1 {
     }
     public static void main(String[] args) {
        //
-        int a[]={2,1,3,4};
+        int a[]={1,2,3,4};
         if (verificaOrd(a)){
             System.out.println("estan en ordenados");
         }else{
