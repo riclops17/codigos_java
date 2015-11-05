@@ -24,15 +24,34 @@ public class ejercicio4 {
         }
         return res;
     }
+    public static boolean esCreciente(int[] a,int i){
+        boolean orden;
+        if (i<=0){
+            orden = true;
+        }else{
+            if(a[i]> a[i-1]){
+                orden = esCreciente(a,i-1);
+                
+            }else {
+                orden = false;
+            }
+        }
+        return orden;
+    }
     public static void main(String[] args) {
         //
         int n, i;
-        int a[]={12,7,0,-1,8,10};
+        int a[]={1,2,4,6,8,10};
         i = a.length-1;
         if (buscador(8,a,i)){
             System.out.println("el numero se encuentra");
         }else{
             System.out.println("el numero no se encuentra");
+        }
+        if(esCreciente(a,a.length-1)){
+            System.out.println("es creciente");
+        }else{
+            System.out.println("no es creciente");
         }
 
     }
