@@ -37,7 +37,7 @@ public class TestPersona {
                 case 3:System.out.println("ingrese el nombre de la persona que desea consultar");
                     String nomb = TecladoIn.readLine();
                     for ( i= 0;i< a.length;i++){
-                        if(nomb.contains(a[i].getNombre()== "suarez" ) && a[i].getCuit().getTipo()== 20||a[i].getCuit().getTipo()== 23||a[i].getCuit().getTipo()== 27 ){
+                        if(nomb.contains(a[i].getNombre()  ) && a[i].getCuit().getTipo()== 20||a[i].getCuit().getTipo()== 23||a[i].getCuit().getTipo()== 27) {
                             System.out.println(a[i].ToString());
                         }
                     }break;
