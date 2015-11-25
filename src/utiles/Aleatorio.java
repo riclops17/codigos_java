@@ -36,4 +36,31 @@ public class Aleatorio {
         }
         return res;
     }
+
+    public static int tipoAleatorio() {
+        int a;
+        double b = Math.random();
+
+        if (b < 0.2) {
+            a = 20;
+        } else {
+            if (b < 0.4) {
+                a = 23;
+
+            } else {
+                if (b < 0.6) {
+                    a = 27;
+                } else {
+                    if (b < 0.8) {
+                        a = 30 ;
+                    } else {
+                        a = 33;
+                    }
+                }
+
+                }
+                
+            }
+        return a;
+        }
 }
