@@ -10,86 +10,105 @@ package tp4;
  * @author riclops
  */
 public class Cuitcuil {
-   //atributos
-    private String tipo;
-    private String documento;
-    private int digito;
+
+    //atributos
+    private int tipo;
+    private long documento;
+    private final int digito;
+
     //constructores
-    public Cuitcuil(String tip,String doc){
-       tipo = tip;
-       documento= doc;
-       
-       
+    public Cuitcuil(int tip, long doc) {
+        tipo = tip;
+        documento = doc;
+        digito = modulo11(doc);
+
     }
+
     //modificadores
-    public void setTipo(String tip){
-        this.tipo=tip;
+    public void setTipo(int tip) {
+        this.tipo = tip;
     }
-    public void setDocumento(String doc){
+
+    public void setDocumento(long doc) {
         this.documento = doc;
     }
+
     //observadores 
-    public String getTipo(){
+    public int getTipo() {
         return this.tipo;
     }
-    public String getDoc(){
+
+    public long getDoc() {
         return this.documento;
     }
-    public String toString(){
-        return "tipo = " +this.tipo+ "documento ="+this.documento;
+
+    public int getDigito() {
+        return this.digito;
     }
+
+    public String toString() {
+        return "tipo = " + this.tipo + "documento =" + this.documento;
+    }
+    public boolean equals(Cuitcuil a){
+        return tipo == a.tipo && documento == a.documento && digito  == a.digito;
+    }
+
     //propios del tipo
-    private int modulo11( String doc){
-        int longitud = doc.length();
-        int i,acum,p,acum2,res;
+    private int modulo11(long doc) {
+        
+        String x = Long.toString(doc);
+        int i, acum, p, acum2, res;
         acum2 = 0;
         p = 2;
         acum = 0;
         res = 0;
-        for(i= longitud-1 ;i<= 0;i--){
-            acum += doc.charAt(i) * p;
-            if (p == 7){
+        for (i = x.length()- 1; i <= 0; i--) {
+            acum += x.charAt(i) * p;
+            if (p == 7) {
                 p = 2;
-            }else {
+            } else {
                 p++;
             }
         }
-            switch (acum2){
-                case 1 : if (acum2 == 0){
+        switch (acum2) {
+            case 1:
+                if (acum2 == 0) {
                     res = 0;
-                    
-                }break;
-                case 2 : if ( acum<11 && acum>1){
-                    res = 11 - acum2;
-                }break;
-                case 3 : if ( acum == 1 ){
-                  int x = acum2 % 10;
-                  int y = acum2 / 10;
-                  res = x + y;
+
                 }
-                    
-            }
-            return res;
-              
-    }
-    public boolean menorQue(Cuitcuil c){
-        String x;
-        String 
-        
-        x = tipo+documento;
-       
-    }
-    
-                     
-                
-            
-            
-            
-            
-            
-        
-       
-    
+                break;
+            case 2:
+                if (acum < 11 && acum > 1) {
+                    res = 11 - acum2;
+                }
+                break;
+            case 3:
+                if (acum == 1) {
+                    int c = acum2 % 10;
+                    int y = acum2 / 10;
+                    res = c + y;
+                }
 
+        }
+        return res;
+
+    }
+
+    public boolean menorQue(Cuitcuil c) {
+        boolean todoOk = tipo <= c.tipo;
+        
+        if (!todoOk) {
+            todoOk = documento <= c.documento;
+        }
+        return todoOk;
+    }
+
+    public boolean menorEstricto(Cuitcuil c) {
+        boolean todoOk = tipo < c.tipo;
+        
+        if (!todoOk) {
+            todoOk = documento < c.documento;
+        }
+        return todoOk;
+    }
 }
-
