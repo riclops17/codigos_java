@@ -21,8 +21,8 @@ public class TestPersona {
         Persona[] a = new Persona[3];
        
 
-        while (op != 19) {
-            //
+        while (op != 17) {
+            menu();
             op = TecladoIn.readInt();
             switch (op) {
                 case 1:
@@ -37,7 +37,7 @@ public class TestPersona {
                 case 3:System.out.println("ingrese el nombre de la persona que desea consultar");
                     String nomb = TecladoIn.readLine();
                     for ( i= 0;i< a.length;i++){
-                        if(nomb.contains(a[i].getNombre())&& (a[i].getCuit().getTipo().equalsIgnoreCase("20")||(a[i].getCuit().getTipo().equalsIgnoreCase("23")||a[i].getCuit().getTipo().equalsIgnoreCase("27")) )){
+                        if(nomb.contains(a[i].getNombre()== "suarez" ) && a[i].getCuit().getTipo()== 20||a[i].getCuit().getTipo()== 23||a[i].getCuit().getTipo()== 27 ){
                             System.out.println(a[i].ToString());
                         }
                     }break;
@@ -47,7 +47,8 @@ public class TestPersona {
                     break;
                 case 6:burbuja(a);
                     break;
-                case 7:
+                case 7: System.out.println("ingrese el cuit-cuil que desea buscar");
+                        
                     break;
                 case 8:
                     break;
@@ -69,7 +70,8 @@ public class TestPersona {
                     }
                     }
                 break;
-                case 11: int k;
+                case 11: 
+                    int k;
                     
                     System.out.println("ingrese el apellido de la persona fisica");
                     String ape =  TecladoIn.readLine();
@@ -107,9 +109,9 @@ public class TestPersona {
         
         
         System.out.println("ingrese el tipo de dni");
-        String tipo = TecladoIn.readLine();
+        int  tipo = TecladoIn.readLineInt();
         System.out.println("ingrese el dni");
-        String dni = TecladoIn.readLine();
+        long dni = TecladoIn.readLineLong();
         System.out.println("ingrese el domicilio");
         String dom = TecladoIn.readLine();
         System.out.println("ingrese el numero de domicilio");
@@ -211,7 +213,7 @@ public static int busquedaBinaria(Persona[] a, Cuitcuil k) {
    public static boolean esPersonaFisica(Persona []a,int i){
        boolean res = true;
        
-       if (a[i].getCuit().getTipo().equalsIgnoreCase("30")|| a[i].getCuit().getTipo().equalsIgnoreCase("33")){
+       if (a[i].getCuit().getTipo()== 30 || a[i].getCuit().getTipo() == 33){
            res = false;
        }
        return res;
@@ -276,7 +278,7 @@ public static void quickSort(Persona[] a,int izq,int der){
 
         for (int i = 0; i < listado.length; i++) {
             listado[i] = new Persona(
-                    Integer.toString(Aleatorio.intAleatorio(10000, 99999999)),
+                    Aleatorio.intAleatorio(10000, 9999999),
                     Aleatorio.tipoAleatorio(),Aleatorio.stringAleatorio(20),
                     Aleatorio.stringAleatorio(15),Aleatorio.intAleatorio(1, 5000),
                     Aleatorio.intAleatorio(1, 9000),
@@ -285,6 +287,25 @@ public static void quickSort(Persona[] a,int izq,int der){
         }
         return listado;
     }
+ public static void menu(){
+     System.out.println("1: cargar datos de personas");
+     System.out.println("2: mostrar datos ");
+     System.out.println("3: consultar persona");
+     System.out.println("4: ordenar por metodo incersion");
+     System.out.println("5: ordenar por  metodo seleccion");
+     System.out.println("6: ordenar por metodo burbuja");
+     System.out.println("7: buscar una persona segun su cuit-cuil secuencialmente");
+     System.out.println("8: buscar una persona segun su cuit-cuil utilizando el metodo busqueda binaria");
+     System.out.println("9: recuperar personas fisicas de una localidad determinada");
+     System.out.println("10: recuperar personas juridicas de una localidad dada");
+     System.out.println("11: contar la cantidad de personas fisicas con un determinado apellido");
+     System.out.println("12: contar la cantidad de empresas de una provincia determinada");
+     System.out.println("13: ordenar por metodo mergeSort");
+     System.out.println("14: ordenar por metodo quickSort");
+     System.out.println("15: ordenar por metodo heapSort");
+     System.out.println("16: cargar un arreglo de personas con valores aleatorios");
+     System.out.println("17: salir");
+ }   
 }
 
 
