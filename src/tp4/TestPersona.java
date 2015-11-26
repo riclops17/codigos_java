@@ -17,11 +17,11 @@ public class TestPersona {
     public static void main(String[] args) {
         int i,u, op;
         
-        op = 0;
-        Persona[] a = new Persona[3];
+       
+        Persona[] a = new Persona[1];
        
 
-        while (op != 17) {
+        do {
             menu();
             op = TecladoIn.readInt();
             switch (op) {
@@ -47,10 +47,30 @@ public class TestPersona {
                     break;
                 case 6:burbuja(a);
                     break;
-                case 7: System.out.println("ingrese el cuit-cuil que desea buscar");
-                        
+                case 7: System.out.println("ingrese el tipo");
+                        int ti = TecladoIn.readLineInt();
+                        System.out.println("ingrese el dni");
+                        long doct = TecladoIn.readLineLong();
+                        Cuitcuil c;
+                        c = new Cuitcuil (ti,doct);
+                        if (secuencia(a,c)!= -1){
+                        System.out.println(a[+secuencia(a,c)].ToString());
+                        }else{
+                        System.out.println("no se encuentra la persona");
+                        }
+            
                     break;
-                case 8:
+                case 8:System.out.println("ingrese el tipo");
+                        int tip = TecladoIn.readLineInt();
+                        System.out.println("ingrese el dni");
+                        long docu = TecladoIn.readLineLong();
+                        Cuitcuil d;
+                        d = new Cuitcuil (tip,docu);
+                        if (busquedaBinaria(a,d)!= -1){
+                        System.out.println(a[+busquedaBinaria(a,d)].ToString());
+                        }else{
+                            System.out.println("no se encuentra la persona");
+                        }
                     break;
                 case 9: System.out.println("ingrese el codigo postal");
                      int codi = TecladoIn.readLineInt();
@@ -98,7 +118,7 @@ public class TestPersona {
                      
 
             }
-        }
+        }while (op != 17);
 
     }
 
@@ -210,7 +230,7 @@ public static int busquedaBinaria(Persona[] a, Cuitcuil k) {
 
         return resultado;
     }
-   public static boolean esPersonaFisica(Persona []a,int i){
+   public static boolean esPersonaFisica(Persona[] a,int i){
        boolean res = true;
        
        if (a[i].getCuit().getTipo()== 30 || a[i].getCuit().getTipo() == 33){
@@ -273,6 +293,31 @@ public static void quickSort(Persona[] a,int izq,int der){
             quickSort(a,j+1,der); 
         }
     }
+public static void mezclar(Persona a[],int izq, int m, int der){
+   int i, j, k;
+   Persona [] b = new Persona [a.length]; //arreglo  auxiliar
+   for (i=izq; i<=der; i++) //copia ambas mitades en el arreglo auxiliar
+             b[i]=a[i];
+
+             i=izq;
+             j=m+1;
+             k=izq;
+             while (i<=m && j<=der) //copia el siguiente elemento más grande
+             if (b[i].getCuit().menorQue(b[j].getCuit()))
+                     a[k++]=b[i++];
+             else
+                     a[k++]=b[j++];
+             while (i<= m) //copia los elementos que quedan de la
+                           a[k++]=b[i++]; //primera mitad (si los hay)
+ }
+public static void mergesort(Persona a[],int izq, int der){
+    if (izq<der){
+            int m =(izq+der)/2;
+            mergesort(a,izq, m);
+            mergesort(a,m+1, der);
+            mezclar(a,izq, m, der);
+    }
+}
  public static Persona[] cargarConjuntoPrueba(int tam) {
         Persona[] listado = new Persona[tam];
 
@@ -287,7 +332,11 @@ public static void quickSort(Persona[] a,int izq,int der){
         }
         return listado;
     }
+ public static void opcion(int r,Persona[] a){
+     
+ }
  public static void menu(){
+     System.out.println();
      System.out.println("1: cargar datos de personas");
      System.out.println("2: mostrar datos ");
      System.out.println("3: consultar persona");
@@ -305,7 +354,23 @@ public static void quickSort(Persona[] a,int izq,int der){
      System.out.println("15: ordenar por metodo heapSort");
      System.out.println("16: cargar un arreglo de personas con valores aleatorios");
      System.out.println("17: salir");
- }   
+ }
+ 
+ public static void shiftUp(int[] a,int i){
+     int derecho = 2*i;
+     int izquierdo = 2*i+1;
+     int padre;
+     if(izquierdo <= a.length-1 && a[izquierdo]> a[i]){
+         padre = izquierdo;
+         
+     }else{
+         padre = i;
+     }
+     if (derecho <= a.length-1 &&a[derecho]> a[padre]){
+         padre = derecho;
+     }
+ }
+ 
 }
 
 
