@@ -15,10 +15,10 @@ import utiles.TecladoIn;
 public class TestPersona {
 
     public static void main(String[] args) {
-        int i,u, op;
+        int i, op;
         
        
-        Persona[] a = new Persona[1];
+        Persona[] a = new Persona[5];
        
 
         do {
@@ -26,21 +26,15 @@ public class TestPersona {
             op = TecladoIn.readInt();
             switch (op) {
                 case 1:
-                    for (i = 0; i < a.length; i++) {
-                        a[i] = cargarDatos();
-                    }
+                    cargar(a);
                     break;
                 case 2:System.out.println("los datos de las personas son:");
-                    for (i = 0;i< a.length;i++){
-                        System.out.println(a[i].ToString());
-                    }break;
+                       mostrarPersona(a);
+                    break;
                 case 3:System.out.println("ingrese el nombre de la persona que desea consultar");
                     String nomb = TecladoIn.readLine();
-                    for ( i= 0;i< a.length;i++){
-                        if(nomb.contains(a[i].getNombre()  ) && a[i].getCuit().getTipo()== 20||a[i].getCuit().getTipo()== 23||a[i].getCuit().getTipo()== 27) {
-                            System.out.println(a[i].ToString());
-                        }
-                    }break;
+                    consultar (a,nomb);
+                    break;
                 case 4:insertion(a);
                     break;
                 case 5 :selection(a);
@@ -74,11 +68,7 @@ public class TestPersona {
                     break;
                 case 9: System.out.println("ingrese el codigo postal");
                      int codi = TecladoIn.readLineInt();
-                  for ( i= 0; i< a.length;i++){
-                      if(codi == a[i].getCodigoP()&& esPersonaFisica(a,i)){
-                          System.out.println(a[i].ToString());
-                      }
-                  }
+                     recuperarPersonaF(a,codi);
                 break;
                 case 10: System.out.println("ingrese el codigo postal");
                       int codig = TecladoIn.readLineInt();
@@ -90,7 +80,8 @@ public class TestPersona {
                     }
                     }
                 break;
-                case 11: 
+                case 11:
+                    
                     int k;
                     
                     System.out.println("ingrese el apellido de la persona fisica");
@@ -103,7 +94,7 @@ public class TestPersona {
                     String pro = TecladoIn.readLine();
                     f = cantE(a,a.length-1,pro);
                     System.out.println("la cantidad de empresas de la provincia es "+f);
-                case 13:
+                case 13: mergesort(a,0,a.length-1);
                     break;
                 case 14: quickSort(a,0,a.length-1);
                     break;
@@ -113,6 +104,7 @@ public class TestPersona {
                        int tam = TecladoIn.readLineInt();
                      a = cargarConjuntoPrueba(tam);
                     break;
+                
                     
                 
                      
@@ -245,7 +237,7 @@ public static int busquedaBinaria(Persona[] a, Cuitcuil k) {
         if(i<0){
             dig1= 0;
         }else{
-            if(ape.contains(a[i].getNombre())&& esPersonaFisica(a,i)){
+            if(ape.contains(a[i].getNombre()) && esPersonaFisica(a,i)){
                 dig1 = 1 +cantP(a,i-1,ape);
             }else{
                 dig1 = cantP(a,i-1,ape);
@@ -355,7 +347,36 @@ public static void mergesort(Persona a[],int izq, int der){
      System.out.println("16: cargar un arreglo de personas con valores aleatorios");
      System.out.println("17: salir");
  }
+ public static void cargar(Persona[] a){
+     int i;
+     for (i = 0; i < a.length; i++) {
+                        a[i] = cargarDatos();
+ }
+ }
+ public static void mostrarPersona(Persona[] a){
+     int i;
  
+     for (i = 0;i< a.length;i++){
+        System.out.println(a[i].ToString());
+ }
+ }
+ public static void consultar(Persona[] a,String nomb){
+     int i;
+     for ( i= 0;i< a.length;i++){
+        if(nomb.contains(a[i].getNombre()  ) && a[i].getCuit().getTipo()== 20||a[i].getCuit().getTipo()== 23||a[i].getCuit().getTipo()== 27) {
+            System.out.println(a[i].ToString());
+                        }
+                    }
+ }
+ public static void recuperarPersonaF(Persona[] a,int codi){
+     int i;
+     for ( i= 0; i< a.length;i++){
+                      if(codi == a[i].getCodigoP()&& esPersonaFisica(a,i)){
+                          System.out.println(a[i].ToString());
+                      }
+                  }
+     
+ }
  public static void shiftUp(int[] a,int i){
      int derecho = 2*i;
      int izquierdo = 2*i+1;
