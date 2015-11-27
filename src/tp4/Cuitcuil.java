@@ -57,58 +57,40 @@ public class Cuitcuil {
     private int modulo11(long doc) {
         
         String x = Long.toString(doc);
-        int i, acum, p, acum2, res;
-        acum2 = 0;
+        int i, acum, p, acum2,cociente, res;
+        
         p = 2;
         acum = 0;
         res = 0;
-        for (i = x.length()- 1; i <= 0; i--) {
-            acum += x.charAt(i) * p;
+        for (i = x.length()- 1; i > -1; i--) {
+            acum += (((int) x.charAt(i))-48) * p;
             if (p == 7) {
                 p = 2;
             } else {
                 p++;
             }
         }
-        switch (acum2) {
-            case 1:
-                if (acum2 == 0) {
+        acum = acum %11;
+        cociente = acum/11;
+        if (acum >= 2 && acum <= 10){
+            res = 11 - acum;
+        }else{
+            if(acum == 1){
+               res = cociente % 10 + cociente /10;
+            } else{
+                if (acum == 0){
                     res = 0;
-
                 }
-                break;
-            case 2:
-                if (acum < 11 && acum > 1) {
-                    res = 11 - acum2;
-                }
-                break;
-            case 3:
-                if (acum == 1) {
-                    int c = acum2 % 10;
-                    int y = acum2 / 10;
-                    res = c + y;
-                }
-
+            }
         }
+        
         return res;
 
     }
-
-    public boolean menorQue(Cuitcuil c) {
-        boolean todoOk = tipo <= c.tipo;
-        
-        if (!todoOk) {
-            todoOk = documento <= c.documento;
-        }
-        return todoOk;
-    }
-
-    public boolean menorEstricto(Cuitcuil c) {
-        boolean todoOk = tipo < c.tipo;
-        
-        if (!todoOk) {
-            todoOk = documento < c.documento;
-        }
-        return todoOk;
-    }
+public boolean menorQue(Cuitcuil c){
+    return (this.tipo <= c.tipo)|| ((this.tipo == c.tipo)&& this.documento <= c.documento);
+}
+public boolean menorEstricto(Cuitcuil c){
+    return (this.tipo < c.tipo)|| ((this.tipo == c.tipo)&& this.documento < c.documento);
+}
 }
