@@ -18,7 +18,7 @@ public class TestPersona {
         int  op;
         
        
-        Persona[] a = new Persona[3];
+        Persona[] a = new Persona[2];
        
 
         do {
