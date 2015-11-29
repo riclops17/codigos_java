@@ -15,10 +15,10 @@ import utiles.TecladoIn;
 public class TestPersona {
 
     public static void main(String[] args) {
-        int i, op;
+        int  op;
         
        
-        Persona[] a = new Persona[5];
+        Persona[] a = new Persona[3];
        
 
         do {
@@ -74,11 +74,7 @@ public class TestPersona {
                       int codig = TecladoIn.readLineInt();
                     System.out.println("ingrese su domicilio");
                      String calle = TecladoIn.readLine();
-                    for(i = 0; i < a.length;i++){
-                        if(codig == a[i].getCodigoP() && calle.equals(a[i].getDomicilio())&& !esPersonaFisica(a,i)){
-                        System.out.println(a[i].ToString());
-                    }
-                    }
+                    recuperarPersonaJ(a,codig,calle);
                 break;
                 case 11:
                     
@@ -237,7 +233,7 @@ public static int busquedaBinaria(Persona[] a, Cuitcuil k) {
         if(i<0){
             dig1= 0;
         }else{
-            if(ape.contains(a[i].getNombre()) && esPersonaFisica(a,i)){
+            if(a[i].getNombre().contains(ape) && esPersonaFisica(a,i)){
                 dig1 = 1 +cantP(a,i-1,ape);
             }else{
                 dig1 = cantP(a,i-1,ape);
@@ -361,9 +357,10 @@ public static void mergesort(Persona a[],int izq, int der){
  }
  }
  public static void consultar(Persona[] a,String nomb){
+     // metodo para recuperar pesonas fisicas cuyo nombre contenga la cadena dada ej suarez
      int i;
      for ( i= 0;i< a.length;i++){
-        if(nomb.contains(a[i].getNombre()  ) && a[i].getCuit().getTipo()== 20||a[i].getCuit().getTipo()== 23||a[i].getCuit().getTipo()== 27) {
+        if(a[i].getNombre().contains(nomb) && esPersonaFisica(a,i)) {
             System.out.println(a[i].ToString());
                         }
                     }
@@ -376,6 +373,14 @@ public static void mergesort(Persona a[],int izq, int der){
                       }
                   }
      
+ }
+ public static void recuperarPersonaJ(Persona[] a,int codig,String calle){
+     int i;
+     for(i = 0; i < a.length;i++){
+     if(codig == a[i].getCodigoP() && calle.equals(a[i].getDomicilio())&& !esPersonaFisica(a,i)){
+        System.out.println(a[i].ToString());
+            }
+         }
  }
  public static void shiftUp(int[] a,int i){
      int derecho = 2*i;
