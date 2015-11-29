@@ -100,6 +100,8 @@ public class TestPersona {
                        int tam = TecladoIn.readLineInt();
                      a = cargarConjuntoPrueba(tam);
                     break;
+                case 17:System.out.println("gracias por utilizar nuestro programa tan confiable");
+                    break;
                 default : System.out.println("error");
                 
                     
