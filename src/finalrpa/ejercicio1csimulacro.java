@@ -55,6 +55,8 @@ public class ejercicio1csimulacro {
                         cantd++;
                 
                     break;
+                default: System.out.println("error");
+                        
             }
             System.out.println("desea seguir s/n");
             respuesta= TecladoIn.readLineNonwhiteChar();
