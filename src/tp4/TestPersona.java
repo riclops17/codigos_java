@@ -301,7 +301,7 @@ public static void mezclar(Persona a[],int izq, int m, int der){
              while (i<= m) //copia los elementos que quedan de la
                            a[k++]=b[i++]; //primera mitad (si los hay)
  }
-public static void mergesort(Persona a[],int izq, int der){
+public static void mergesort(Persona[] a,int izq, int der){
     if (izq<der){
             int m =(izq+der)/2;
             mergesort(a,izq, m);
@@ -385,21 +385,45 @@ public static void mergesort(Persona a[],int izq, int der){
             }
          }
  }
- public static void shiftUp(int[] a,int i){
-     int derecho = 2*i;
-     int izquierdo = 2*i+1;
-     int padre;
-     if(izquierdo <= a.length-1 && a[izquierdo]> a[i]){
-         padre = izquierdo;
-         
-     }else{
-         padre = i;
-     }
-     if (derecho <= a.length-1 &&a[derecho]> a[padre]){
-         padre = derecho;
-     }
- }
- 
+public static void siftUp(Persona[] a, int i,int n){
+  
+        int izq,der,padre;
+        Persona aux;
+        izq = 2*i ;
+        der = 2*i + 1;
+        padre = i;
+        if (izq <= n && a[i].getCuit().menorEstricto(a[izq].getCuit())){
+            padre = izq;
+        }
+        if (der <= n && a[padre].getCuit().menorEstricto(a[der].getCuit()) ){        
+            padre = der;
+        }
+        if (padre!= i){
+            aux = a[i];
+            a[i]= a[padre];
+            a[padre]= aux;
+            siftUp(a, padre,n);
+        }
+    }
+    public static void armarHeapMaximo(Persona[] a,int n){
+    int i;
+    for ( i = n/2; i >= 0; i--){
+       siftUp(a, i,n);   
+      }  
+    }
+    public static void sort(Persona[] a,int n){
+      int i;
+      Persona aux;
+      armarHeapMaximo(a,n);        
+      for ( i = n; i > 0; i--){ 
+        aux = a[0];
+        a[0] = a[i];
+        a[i] = aux;
+        n = n-1;
+        siftUp(a, 0,n);
+       }
+
+    }     
 }
 
 
