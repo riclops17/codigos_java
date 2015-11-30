@@ -288,18 +288,18 @@ public static void mezclar(Persona a[],int izq, int m, int der){
    int i, j, k;
    Persona [] b = new Persona [a.length]; //arreglo  auxiliar
    for (i=izq; i<=der; i++) //copia ambas mitades en el arreglo auxiliar
-             b[i]=a[i];
+            b[i]=a[i];
 
-             i=izq;
-             j=m+1;
-             k=izq;
-             while (i<=m && j<=der) //copia el siguiente elemento más grande
-             if (b[i].getCuit().menorQue(b[j].getCuit()))
-                     a[k++]=b[i++];
-             else
-                     a[k++]=b[j++];
-             while (i<= m) //copia los elementos que quedan de la
-                           a[k++]=b[i++]; //primera mitad (si los hay)
+    i=izq;
+    j=m+1;
+    k=izq;
+    while (i<=m && j<=der) //copia el siguiente elemento más grande
+    if (b[i].getCuit().menorQue(b[j].getCuit()))
+      a[k++]=b[i++];
+      else
+       a[k++]=b[j++];
+     while (i<= m) //copia los elementos que quedan de la
+       a[k++]=b[i++]; //primera mitad (si los hay)
  }
 public static void mergesort(Persona[] a,int izq, int der){
     if (izq<der){
