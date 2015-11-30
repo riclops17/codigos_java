@@ -94,7 +94,7 @@ public class TestPersona {
                     break;
                 case 14: quickSort(a,0,a.length-1);
                     break;
-                case 15:
+                case 15: heapSort(a,a.length-1);
                     break;
                 case 16 : System.out.println("ingrese la cantidad de personas");
                        int tam = TecladoIn.readLineInt();
@@ -411,7 +411,7 @@ public static void siftUp(Persona[] a, int i,int n){
        siftUp(a, i,n);   
       }  
     }
-    public static void sort(Persona[] a,int n){
+    public static void heapSort(Persona[] a,int n){
       int i;
       Persona aux;
       armarHeapMaximo(a,n);        
