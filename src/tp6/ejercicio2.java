@@ -52,7 +52,7 @@ public class ejercicio2 {
      public static void main(String[] args) {
         int a[]={1,2,3,4};
         int x = 5;
-        int y = 0;
+        int y ;
          y= binarySearch(a,x);
          if ( y == -1){
              System.out.println("no se encuentra el elemento");

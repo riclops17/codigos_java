@@ -14,19 +14,22 @@ public class ejercicio4 {
         int[] c= new int[a.length + b.length];
         int cantA = a.length;
         int cantB = b.length;
-        int i , k;
+        int i , k= 0;
         i= 0;
-        boolean menor = true;
+        boolean menor;
         for(int j=0;j<cantA;j++){
-            k=0;
+            
             menor  = true;
             while (k < cantB && menor){
                 if (a[k]<=b[j]){
                     c[i]=a[k];
-                    k++;
+                    if(k<cantA-1){
+                        k++;
+                    }
                     i++;
+                    
                 }else{
-                    c[i]= b[i];
+                    c[i]= b[j];
                     menor = false;
                     i++;
                 }
@@ -38,14 +41,21 @@ public class ejercicio4 {
     }
     public static void main(String[] args) {
         //
-        int a[]={1,2,3,4};
-        int b[]={5,6,7};
-        sumOrd(a,b);
-        for (int i = 0; i < sumOrd(a,b).length; i++) {
-            System.out.print(sumOrd(a,b)[i] + " ");
+        int a[]={2,5,8,9};
+        int b[]={3,6,7};
+        int[] c = new int [7];
+       // c = sumOrd(a,b);
+        if(esCreciente(a,a.length)){
+            System.out.println("es creciente");
+            
+        }else{
+            System.out.println("no es creciente");
         }
+       // for (int i = 0; i < c.length; i++) {
+           // System.out.print(c[i] + " ");
+       // }
 
-        System.out.println();
+        //System.out.println();
     }
     
 }
