@@ -134,7 +134,6 @@ public class TestPersona {
                     break;
                 default:
                     System.out.println("error, ingrese nuevamente");
-
             }
         } while (op != 17);
 
