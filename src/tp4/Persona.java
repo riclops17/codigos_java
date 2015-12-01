@@ -25,7 +25,6 @@ public class Persona {
         nroDomicilio = nro;
         codigoP = cod;
         provincia = prov;
-
     }
 
     public Cuitcuil getCuit() {
