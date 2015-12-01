@@ -133,7 +133,7 @@ public class TestPersona {
                 case 17:
                     break;
                 default:
-                    System.out.println("error");
+                    System.out.println("error, ingrese nuevamente");
 
             }
         } while (op != 17);
