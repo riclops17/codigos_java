@@ -88,7 +88,7 @@ public class Cuitcuil {
 
     }
 public boolean menorQue(Cuitcuil c){
-    return (this.tipo <= c.tipo)|| ((this.tipo == c.tipo)&& this.documento <= c.documento);
+    return (this.tipo < c.tipo)|| ((this.tipo == c.tipo)&& this.documento <= c.documento);
 }
 public boolean menorEstricto(Cuitcuil c){
     return (this.tipo < c.tipo)|| ((this.tipo == c.tipo)&& this.documento < c.documento);
