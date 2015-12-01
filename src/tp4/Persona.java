@@ -10,46 +10,52 @@ package tp4;
  * @author riclops
  */
 public class Persona {
-    private Cuitcuil persona;
+
+    private Cuitcuil cuit;
     private String nombre;
     private String domicilio;
     private int nroDomicilio;
     private int codigoP;
     private String provincia;
-    
-    public Persona (Cuitcuil per,String nom,String calle,int nro, int cod, String prov){
-        persona = per;
+
+    public Persona(long dni, int tip, String nom, String calle, int nro, int cod, String prov) {
+        cuit = new Cuitcuil(tip, dni);
         nombre = nom;
         domicilio = calle;
         nroDomicilio = nro;
         codigoP = cod;
         provincia = prov;
-        
-       
+
     }
-    public Cuitcuil getPersona(){
-        return this.persona;
+
+    public Cuitcuil getCuit() {
+        return this.cuit;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         return this.nombre;
     }
-    public String getDomicilio(){
+
+    public String getDomicilio() {
         return this.domicilio;
     }
-    public int getNroDomicilio(){
+
+    public int getNroDomicilio() {
         return this.nroDomicilio;
-        
+
     }
-    public int getCodigoP(){
+
+    public int getCodigoP() {
         return this.codigoP;
     }
-   public String getProvincia(){
-       return this.provincia;
-   }
-   public String ToString (){
-       return "nombre: "+nombre+ "Cuil:"+persona.getTipo()+"-"+persona.getDoc()+"-"+persona.getDigito()+"\ndomicilio:"+domicilio+"\nnumero:"+nroDomicilio+"\nCodigo postal:"+codigoP+"\nprovincia:"+provincia;
-               
-   }
-    
-    
+
+    public String getProvincia() {
+        return this.provincia;
+    }
+
+    public String ToString() {
+        return "nombre: " + nombre + "Cuil: " + cuit.getTipo() + "-" + cuit.getDoc() + "-" + cuit.getDigito() + "\ndomicilio:" + domicilio + "\nnumero:" + nroDomicilio + "\nCodigo postal:" + codigoP + "\nprovincia:" + provincia;
+
+    }
+
 }
