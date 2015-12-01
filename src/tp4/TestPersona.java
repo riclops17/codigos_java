@@ -16,7 +16,8 @@ public class TestPersona {
 
     public static void main(String[] args) {
         int op;
-
+    //System.out.println("ingrese la cantidad de personas"); se evitara esta opcion ya que se cargaran aletoriamente
+        
         Persona[] a = new Persona[2];
 
         do {
@@ -37,12 +38,15 @@ public class TestPersona {
                     break;
                 case 4:
                     insertion(a);
+                    System.out.println("se ah ordenado exitosamente");
                     break;
                 case 5:
                     selection(a);
+                    System.out.println("se ah ordenado exitosamente");
                     break;
                 case 6:
                     burbuja(a);
+                    System.out.println("se ah ordenado exitosamente");
                     break;
                 case 7:
                     System.out.println("ingrese el tipo");
@@ -208,6 +212,7 @@ public class TestPersona {
     }
 
     public static int secuencia(Persona[] a, Cuitcuil t) {
+        // retorna la posocicion de la persona si se encuentra de lo contrario retorna -1
         int i;
         i = 0;
         int posicion = -1;
@@ -225,8 +230,8 @@ public class TestPersona {
     }
 
     public static int busquedaBinaria(Persona[] a, Cuitcuil k) {
+        // retorna la posocicion de la persona si se encuentra de lo contrario retorna -1
         int inicio, fin, medio, resultado;
-
         inicio = 0;
         fin = a.length - 1;
         resultado = -1;
@@ -249,6 +254,7 @@ public class TestPersona {
     }
 
     public static boolean esPersonaFisica(Persona[] a, int i) {
+        // retorna verdadero si es se trata de una persona fisica de lo contrario falso
         boolean res = true;
 
         if (a[i].getCuit().getTipo() == 30 || a[i].getCuit().getTipo() == 33) {
@@ -258,7 +264,7 @@ public class TestPersona {
     }
 
     public static int cantP(Persona[] a, int i, String ape) {
-        // modulo que busca la cantidad de personas   del 2do parcial modificado para este ejercicio
+        // modulo que busca la cantidad de personas ,es  del 2do parcial modificado para este ejercicio
         int dig1;
 
         if (i < 0) {
@@ -274,7 +280,7 @@ public class TestPersona {
     }
 
     public static int cantE(Persona[] a, int i, String prov) {
-        // modulo que busca la cantidad de empresas tomado del 2do parcial modificado para este ejercicio
+        // modulo que busca la cantidad de empresas ,tomado del 2do parcial modificado para este ejercicio
         int dig;
         if (i < 0) {
             dig = 0;
@@ -361,23 +367,23 @@ public class TestPersona {
     
     public static void menu() {
         System.out.println();
-        System.out.println("1: cargar datos de personas");
-        System.out.println("2: mostrar datos ");
-        System.out.println("3: consultar persona");
-        System.out.println("4: ordenar por metodo incersion");
-        System.out.println("5: ordenar por  metodo seleccion");
-        System.out.println("6: ordenar por metodo burbuja");
-        System.out.println("7: buscar una persona segun su cuit-cuil secuencialmente");
-        System.out.println("8: buscar una persona segun su cuit-cuil utilizando el metodo busqueda binaria");
-        System.out.println("9: recuperar personas fisicas de una localidad determinada");
-        System.out.println("10: recuperar personas juridicas de una localidad dada");
-        System.out.println("11: contar la cantidad de personas fisicas con un determinado apellido");
-        System.out.println("12: contar la cantidad de empresas de una provincia determinada");
-        System.out.println("13: ordenar por metodo mergeSort");
-        System.out.println("14: ordenar por metodo quickSort");
-        System.out.println("15: ordenar por metodo heapSort");
-        System.out.println("16: cargar un arreglo de personas con valores aleatorios");
-        System.out.println("17: salir");
+        System.out.println("1: Cargar datos de personas");
+        System.out.println("2: Mostrar datos ");
+        System.out.println("3: Consultar persona");
+        System.out.println("4: Ordenar por metodo incersion");
+        System.out.println("5: Ordenar por  metodo seleccion");
+        System.out.println("6: Ordenar por metodo burbuja");
+        System.out.println("7: Buscar una persona segun su cuit-cuil secuencialmente");
+        System.out.println("8: Buscar una persona segun su cuit-cuil utilizando el metodo busqueda binaria");
+        System.out.println("9: Recuperar personas fisicas de una localidad determinada");
+        System.out.println("10:Recuperar personas juridicas de una localidad dada");
+        System.out.println("11:Contar la cantidad de personas fisicas con un determinado apellido");
+        System.out.println("12:Contar la cantidad de empresas de una provincia determinada");
+        System.out.println("13:Ordenar por metodo mergeSort");
+        System.out.println("14:Ordenar por metodo quickSort");
+        System.out.println("15:Ordenar por metodo heapSort");
+        System.out.println("16:Cargar un arreglo de personas con valores aleatorios");
+        System.out.println("17:Salir");
     }
 
     public static void cargar(Persona[] a) {
@@ -408,6 +414,7 @@ public class TestPersona {
     }
 
     public static void recuperarPersonaF(Persona[] a, int codi) {
+        // recupera las personas fisicas dado su codigo postal
         int i;
         for (i = 0; i < a.length; i++) {
             if (codi == a[i].getCodigoP() && esPersonaFisica(a, i)) {
@@ -418,6 +425,7 @@ public class TestPersona {
     }
 
     public static void recuperarPersonaJ(Persona[] a, int codig, String calle) {
+        // recupera las personas juridicas dado su codigo postal y calle
         int i;
         for (i = 0; i < a.length; i++) {
             if (codig == a[i].getCodigoP() && calle.equals(a[i].getDomicilio()) && !esPersonaFisica(a, i)) {
@@ -427,7 +435,7 @@ public class TestPersona {
     }
 
     public static void siftUp(Persona[] a, int i, int n) {
-
+         
         int izq, der, padre;
         Persona aux;
         izq = 2 * i;
