@@ -57,7 +57,7 @@ public class Cuitcuil {
     private int modulo11(long doc) {
         
         String x = Long.toString(doc);
-        int i, acum, p, acum2,cociente, res;
+        int i, acum, p,cociente, res;
         
         p = 2;
         acum = 0;
