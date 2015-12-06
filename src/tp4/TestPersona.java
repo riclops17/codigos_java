@@ -33,6 +33,7 @@ public class TestPersona {
             a=new Persona[TecladoIn.readLineInt()];
             generaA(a);
             break;
+        default : System.out.println("error, vuelva a ingresar");
         }
         }
         do {
