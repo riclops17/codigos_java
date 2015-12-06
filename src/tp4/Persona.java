@@ -26,6 +26,14 @@ public class Persona {
         codigoP = cod;
         provincia = prov;
     }
+    public Persona(){
+        cuit = new Cuitcuil(00000000, 20);
+        nombre = null;
+        domicilio = null;
+        nroDomicilio = 000;
+        codigoP = 0000;
+        provincia =null;
+    }
 
     public Cuitcuil getCuit() {
         return this.cuit;
@@ -51,7 +59,25 @@ public class Persona {
     public String getProvincia() {
         return this.provincia;
     }
-
+    public void setNombre(String nom){
+        this.nombre = nom;
+    }
+    public void setDomicilio(String calle){
+        this.domicilio= calle;
+    }
+    public void setNroDomicilio(int nro){
+        this.nroDomicilio= nro;   
+    }
+    public void setCodigoP(int cod){
+        this.codigoP=cod;
+    }
+    public void setProvincia(String prov){
+        this.provincia= prov;
+    }
+    public void setCuil (int tip,long dni){
+        this.cuit.setTipo(tip);
+        this.cuit.setDocumento(dni);
+    }
     public String ToString() {
         return "nombre: " + nombre + "Cuil: " + cuit.getTipo() + "-" + cuit.getDoc() + "-" + cuit.getDigito() + "\ndomicilio:" + domicilio + "\nnumero:" + nroDomicilio + "\nCodigo postal:" + codigoP + "\nprovincia:" + provincia;
 
