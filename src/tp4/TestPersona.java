@@ -50,15 +50,15 @@ public class TestPersona {
                     break;
                 case 3:
                     insercion(a);
-                    System.out.println("se ah ordenado exitosamente");
+                    System.out.println("se ha ordenado exitosamente");
                     break;
                 case 4:
                     selection(a);
-                    System.out.println("se ah ordenado exitosamente");
+                    System.out.println("se ha ordenado exitosamente");
                     break;
                 case 5:
                     burbuja(a);
-                    System.out.println("se ah ordenado exitosamente");
+                    System.out.println("se ha ordenado exitosamente");
                     break;
                 case 6:
                     System.out.println("ingrese el tipo");
@@ -68,7 +68,7 @@ public class TestPersona {
                     Cuitcuil c;
                     c = new Cuitcuil(ti, doct);
                     if (secuencia(a, c) != -1) {
-                        System.out.println(a[+secuencia(a, c)].ToString());
+                        System.out.println(a[secuencia(a, c)].ToString());
                     } else {
                         System.out.println("no se encuentra la persona");
                     }
@@ -82,7 +82,7 @@ public class TestPersona {
                     Cuitcuil d;
                     d = new Cuitcuil(tip, docu);
                     if (busquedaBinaria(a, d) != -1) {
-                        System.out.println(a[+busquedaBinaria(a, d)].ToString());
+                        System.out.println(a[busquedaBinaria(a, d)].ToString());
                     } else {
                         System.out.println("no se encuentra la persona");
                     }
@@ -120,7 +120,7 @@ public class TestPersona {
                     *mezcla las 2 mitades ordenadas en un arreglo ordenado
                     */
                     mergesort(a,0,a.length-1);
-                    System.out.println("se ah ordenado exitosamente");
+                    System.out.println("se ha ordenado exitosamente");
                     break;
                 case 13:
                     /*
@@ -132,11 +132,11 @@ public class TestPersona {
                     *y se sigue realizando la búsqueda hasta que las dos búsquedas se encuentran. 
                     */
                     quickSort(a, 0, a.length - 1);
-                    System.out.println("se ah ordenado exitosamente");
+                    System.out.println("se ha ordenado exitosamente");
                     break;
                 case 14:
                     heapSort(a, a.length - 1);
-                    System.out.println("se ah ordenado exitosamente");
+                    System.out.println("se ha ordenado exitosamente");
                     break;
                 case 15:
                     break;
