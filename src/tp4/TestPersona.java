@@ -374,7 +374,7 @@ public class TestPersona {
         System.out.println("6: Buscar una persona segun su cuit-cuil secuencialmente");
         System.out.println("7: Buscar una persona segun su cuit-cuil utilizando el metodo busqueda binaria");
         System.out.println("8: Recuperar personas fisicas de una localidad determinada");
-        System.out.println("9:Recuperar personas juridicas de una localidad dada");
+        System.out.println("9: Recuperar personas juridicas de una localidad dada");
         System.out.println("10:Contar la cantidad de personas fisicas con un determinado apellido");
         System.out.println("11:Contar la cantidad de empresas de una provincia determinada");
         System.out.println("12:Ordenar por metodo mergeSort");
@@ -480,13 +480,12 @@ public class TestPersona {
     }
     public static Persona cargaA(){
         Persona total;
-        total= new Persona();
-        total.setCuil(Aleatorio.tipoAleatorio(), Aleatorio.intAleatorio(10000, 9999999));
-        total.setNombre(Aleatorio.stringAleatorio(20));
-        total.setDomicilio(Aleatorio.stringAleatorio(15));
-        total.setNroDomicilio(Aleatorio.intAleatorio(1, 5000));
-        total.setCodigoP(Aleatorio.intAleatorio(1, 9000));
-        total.setProvincia(Aleatorio.stringAleatorio(20));
+        total= new Persona(Aleatorio.intAleatorio(10000, 9999999),
+                    Aleatorio.tipoAleatorio(), Aleatorio.stringAleatorio(20),
+                    Aleatorio.stringAleatorio(15), Aleatorio.intAleatorio(1, 5000),
+                    Aleatorio.intAleatorio(1, 9000),
+                    Aleatorio.stringAleatorio(20));
+        
 return total; 
     }
     
