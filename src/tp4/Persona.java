@@ -26,15 +26,7 @@ public class Persona {
         codigoP = cod;
         provincia = prov;
     }
-    public Persona(){
-        cuit = new Cuitcuil(00000000, 20);
-        nombre = null;
-        domicilio = null;
-        nroDomicilio = 000;
-        codigoP = 0000;
-        provincia =null;
-    }
-
+   
     public Cuitcuil getCuit() {
         return this.cuit;
     }
