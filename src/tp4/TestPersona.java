@@ -15,40 +15,52 @@ import utiles.TecladoIn;
 public class TestPersona {
 
     public static void main(String[] args) {
-        int op;
-    //System.out.println("ingrese la cantidad de personas"); se evitara esta opcion ya que se cargaran aletoriamente
-        
-        Persona[] a = new Persona[2];
-
+        int op, cont;
+        cont = 0;
+        Persona[] a = new Persona[0];
+        while(cont!=1 && cont!=2){
+        System.out.println("Bienvenido al Registro de Personas ");
+        System.out.println("ingrese la opcion que desea realizar:");
+        System.out.println("1:Cargar Personas Manualmente");
+        System.out.println("2:Cargar Personas Aleatoreas");
+        cont=TecladoIn.readLineInt();
+     switch (cont){
+        case 1: System.out.println("ingrese la cantidad de personas");
+            a= new Persona[TecladoIn.readLineInt()];
+             cargar(a);
+             break;
+        case 2: System.out.println(" ingrese al cantidad de personas aleatorias");     
+            a=new Persona[TecladoIn.readLineInt()];
+            generaA(a);
+            break;
+        }
+        }
         do {
             menu();
             op = TecladoIn.readInt();
             switch (op) {
                 case 1:
-                    cargar(a);
-                    break;
-                case 2:
                     System.out.println("los datos de las personas son:");
                     mostrarPersona(a);
                     break;
-                case 3:
+                case 2:
                     System.out.println("ingrese el nombre de la persona que desea consultar");
                     String nomb = TecladoIn.readLine();
                     consultar(a, nomb);
                     break;
-                case 4:
-                    insertion(a);
+                case 3:
+                    insercion(a);
                     System.out.println("se ah ordenado exitosamente");
                     break;
-                case 5:
+                case 4:
                     selection(a);
                     System.out.println("se ah ordenado exitosamente");
                     break;
-                case 6:
+                case 5:
                     burbuja(a);
                     System.out.println("se ah ordenado exitosamente");
                     break;
-                case 7:
+                case 6:
                     System.out.println("ingrese el tipo");
                     int ti = TecladoIn.readLineInt();
                     System.out.println("ingrese el dni");
@@ -62,7 +74,7 @@ public class TestPersona {
                     }
 
                     break;
-                case 8:
+                case 7:
                     System.out.println("ingrese el tipo");
                     int tip = TecladoIn.readLineInt();
                     System.out.println("ingrese el dni");
@@ -75,32 +87,33 @@ public class TestPersona {
                         System.out.println("no se encuentra la persona");
                     }
                     break;
-                case 9:
+                case 8:
                     System.out.println("ingrese el codigo postal");
                     int codi = TecladoIn.readLineInt();
                     recuperarPersonaF(a, codi);
                     break;
-                case 10:
+                case 9:
                     System.out.println("ingrese el codigo postal");
                     int codig = TecladoIn.readLineInt();
                     System.out.println("ingrese su domicilio");
                     String calle = TecladoIn.readLine();
                     recuperarPersonaJ(a, codig, calle);
                     break;
-                case 11:
+                case 10:
                     int k;
                     System.out.println("ingrese el apellido de la persona fisica");
                     String ape = TecladoIn.readLine();
                     k = cantP(a, a.length - 1, ape);
                     System.out.println("la cantidad de personas con ese apellido es " + k);
                     break;
-                case 12:
+                case 11:
                     int f;
                     System.out.println("ingrese el nombre de la provincia");
                     String pro = TecladoIn.readLine();
                     f = cantE(a, a.length - 1, pro);
                     System.out.println("la cantidad de empresas de la provincia es " + f);
-                case 13:
+                    break;
+                case 12:
                     /*
                     *si el numero a ordenar es de 0 y 1 termina
                     *ordena recursivamente las 2 mitades del arreglo
@@ -109,7 +122,7 @@ public class TestPersona {
                     mergesort(a,0,a.length-1);
                     System.out.println("se ah ordenado exitosamente");
                     break;
-                case 14:
+                case 13:
                     /*
                     *Elijo  un elemento de la lista a ordenar al que lo llamo pivote
                     *Después de elegir el pivote se realizan dos búsquedas
@@ -121,30 +134,34 @@ public class TestPersona {
                     quickSort(a, 0, a.length - 1);
                     System.out.println("se ah ordenado exitosamente");
                     break;
-                case 15:
+                case 14:
                     heapSort(a, a.length - 1);
                     System.out.println("se ah ordenado exitosamente");
                     break;
-                case 16:
-                    System.out.println("ingrese la cantidad de personas");
-                    int tam = TecladoIn.readLineInt();
-                    a = cargarConjuntoPrueba(tam);
-                    break;
-                case 17:
+                case 15:
                     break;
                 default:
                     System.out.println("error, ingrese nuevamente");
             }
-        } while (op != 17);
+        } while (op != 15);
 
     }
 
     public static Persona cargarDatos() {
-        Persona a;
+        Persona x;
+        int tipo;
+        boolean idvalido;
         System.out.println("ingrese el nombre de la persona");
         String nom = TecladoIn.readLine();
         System.out.println("ingrese el tipo de dni");
-        int tipo = TecladoIn.readLineInt();
+        do {
+                System.out.print(" tipo: (20, 23, 27, 30 o 33): ");
+                 tipo = TecladoIn.readLineInt();
+                idvalido = tipo == 20 || tipo == 23 || tipo == 27 || tipo == 30 || tipo == 33;
+                if (!idvalido) {
+                    System.out.println("Número de identificación incorrecto, reingrese datos");
+                }
+            } while (!idvalido);
         System.out.println("ingrese el dni");
         long dni = TecladoIn.readLineLong();
         System.out.println("ingrese el domicilio");
@@ -155,12 +172,12 @@ public class TestPersona {
         String prov = TecladoIn.readLine();
         System.out.println("ingrese el codigo postal");
         int cod = TecladoIn.readLineInt();
-        a = new Persona(dni, tipo, nom, dom, nro, cod, prov);
-        return a;
-
+        x = new Persona(dni, tipo, nom, dom, nro, cod, prov);
+        return x;
+    
     }
 
-    public static void insertion(Persona[] a) {
+    public static void insercion(Persona[] a) {
         int p, j;
         Persona temp;
         for (p = 1; p <= a.length - 1; p++) {
@@ -346,43 +363,24 @@ public class TestPersona {
             mezclar(a,izq, m, der);
     }
 }
-     
-    public static Persona[] cargarConjuntoPrueba(int tam) {
-        // crea un conjunto de personas aleatorio
-        Persona[] listado = new Persona[tam];
-
-        for (int i = 0; i < listado.length; i++) {
-            listado[i] = new Persona(
-                    Aleatorio.intAleatorio(10000, 9999999),
-                    Aleatorio.tipoAleatorio(), Aleatorio.stringAleatorio(20),
-                    Aleatorio.stringAleatorio(15), Aleatorio.intAleatorio(1, 5000),
-                    Aleatorio.intAleatorio(1, 9000),
-                    Aleatorio.stringAleatorio(20)
-            );
-        }
-        return listado;
-    }
-
-    
     public static void menu() {
         System.out.println();
-        System.out.println("1: Cargar datos de personas");
-        System.out.println("2: Mostrar datos ");
-        System.out.println("3: Consultar persona");
-        System.out.println("4: Ordenar por metodo incersion");
-        System.out.println("5: Ordenar por  metodo seleccion");
-        System.out.println("6: Ordenar por metodo burbuja");
-        System.out.println("7: Buscar una persona segun su cuit-cuil secuencialmente");
-        System.out.println("8: Buscar una persona segun su cuit-cuil utilizando el metodo busqueda binaria");
-        System.out.println("9: Recuperar personas fisicas de una localidad determinada");
-        System.out.println("10:Recuperar personas juridicas de una localidad dada");
-        System.out.println("11:Contar la cantidad de personas fisicas con un determinado apellido");
-        System.out.println("12:Contar la cantidad de empresas de una provincia determinada");
-        System.out.println("13:Ordenar por metodo mergeSort");
-        System.out.println("14:Ordenar por metodo quickSort");
-        System.out.println("15:Ordenar por metodo heapSort");
-        System.out.println("16:Cargar un arreglo de personas con valores aleatorios");
-        System.out.println("17:Salir");
+        System.out.println("¿Que desea realizar ?");
+        System.out.println("1: Mostrar datos ");
+        System.out.println("2: Consultar persona");
+        System.out.println("3: Ordenar por metodo incersion");
+        System.out.println("4: Ordenar por  metodo seleccion");
+        System.out.println("5: Ordenar por metodo burbuja");
+        System.out.println("6: Buscar una persona segun su cuit-cuil secuencialmente");
+        System.out.println("7: Buscar una persona segun su cuit-cuil utilizando el metodo busqueda binaria");
+        System.out.println("8: Recuperar personas fisicas de una localidad determinada");
+        System.out.println("9:Recuperar personas juridicas de una localidad dada");
+        System.out.println("10:Contar la cantidad de personas fisicas con un determinado apellido");
+        System.out.println("11:Contar la cantidad de empresas de una provincia determinada");
+        System.out.println("12:Ordenar por metodo mergeSort");
+        System.out.println("13:Ordenar por metodo quickSort");
+        System.out.println("14:Ordenar por metodo heapSort");
+        System.out.println("15:Salir");
     }
 
     public static void cargar(Persona[] a) {
@@ -474,4 +472,23 @@ public class TestPersona {
         }
 
     }
+    public static void generaA(Persona[] a){
+        int i;
+        for ( i=0;i< a.length;i++){
+            a[i] = cargaA();
+        }
+    }
+    public static Persona cargaA(){
+        Persona total;
+        total= new Persona();
+        total.setCuil(Aleatorio.tipoAleatorio(), Aleatorio.intAleatorio(10000, 9999999));
+        total.setNombre(Aleatorio.stringAleatorio(20));
+        total.setDomicilio(Aleatorio.stringAleatorio(15));
+        total.setNroDomicilio(Aleatorio.intAleatorio(1, 5000));
+        total.setCodigoP(Aleatorio.intAleatorio(1, 9000));
+        total.setProvincia(Aleatorio.stringAleatorio(20));
+return total; 
+    }
+    
+    
 }
